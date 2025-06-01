@@ -1,0 +1,74 @@
+\chapter{复数与复函数}
+\section{复数及其运算}
+数学史
+复数源于一元三次方程的求解。
+一元三次方程（$x,y,z$是未知量）：
+\begin{itemize}
+    \item 九章算术中有开立方操作，可以解决$x^3=a$类型的方程。
+    \item 唐代王孝通在《缉古算经》（《缉古算术》）中收录了$x^3+ax^2+bx=c$的数值解法，这方程源于实际问题。
+    \item 1247年，南宋秦久韶的《数学九章》给出了一般高次方程的数值解法。欧洲人Paolo Ruffini在600年后重新发现了这一方法。
+    \item 11世纪波斯数学家Omar Khayyam（海亚姆）发现一元三次方程通常有3个根，并对一元三次方程进行了分类等工作，但没有导出求根公式。Khayyam在天文、几何等方面也有贡献。
+    \item 印度人等也对一元三次方程有所研究。
+    \item 意大利Ferro（费罗）、Tartaglia、Cardano.
+    \item Bombelli仔细研究了Cardano公式，发现其中不可避免地出现复数。Bombelli创造了复数。
+\end{itemize}
+考虑
+\begin{equation*}
+    ax^3+bx^2+cx+d=0,a\neq 0.
+\end{equation*}
+让$x=y-b/(3a)$, 方程化为
+\begin{equation*}
+    ay^3+py+q=0.
+\end{equation*}
+注意到
+\begin{align*}
+    y^3+u^3+v^3-3yuv&=(y+u+v)(y^2+u^2+v^2-yu-yv-uv)
+    \\ &=(y+u+v)(y+\omega u+\omega^2 v)(y+\omega^2 u+\omega v),
+\end{align*}
+其中$\omega=(-1+\sqrt{3}\imageunit)/2$, $\omega=(-1-\sqrt{3}\imageunit)/2$, 只需再用Vi\`eta定理解关于$u,v$的方程组
+\begin{equation*}
+    u^3+v^3=q, -3uv=p
+\end{equation*}
+即可。最终结果为
+\begin{equation*}
+    y_1=u+v,y_2=\omega u+\omega^2 v,y_3=\omega^2 u+\omega v,
+\end{equation*}
+其中
+\begin{equation*}
+    u,v=\sqrt[3]{-q/2\pm\sqrt{\Delta}},\Delta=(q/2)^2+(p/3)^3.
+\end{equation*}
+$\Delta$称为一元三次方程的判别式：
+\begin{itemize}
+    \item $\Delta>0$时，$y_1\in\realset$, $y_{2,3}\in\complexset\setminus\realset$.
+    \item $\Delta<0$时，由$\conjugate u=v$知道$y_1\in\realset$, 由$\conjugate{\omega u}=\omega^2 v$知道$y_2\in\realset$, 同理$y_3\in\realset$.
+    \item $\Delta=0$时$u=v$, 有重根。
+\end{itemize}
+例（Bombelli）
+\begin{equation*}
+    x^3-15x-4=0.
+\end{equation*}
+试根：从$\pm 1,\pm 2,\pm 4$中试出$4$是根，多项式除法之后得到答案$4,-2\pm\sqrt{3}$.\\
+求根公式：$p=-15,q=-4$, $\Delta=-121$, $u,v=\sqrt[3]{2\pm 11\imageunit}=2\pm i$, 之后得到根$4,-2\pm\sqrt{3}$.
+
+例. 让$y=\cos 20^\circ$, 三倍角公式导致$4y^3-3y=0.5$, 再让$z=2y$得到$z^3-3z-1=0$. $p=-3,q=-1$, $\Delta=-3/4$, $u,v=\sqrt[3]{0.5\pm\imageunit 0.5\sqrt{3}}$. 几何上看出$u,v=\cos 20^\circ\pm \imageunit\sin 20^\circ$. $z$的3个根为$z_1=2\cos 20^\circ,z_2=2\cos 140^\circ,z_3=2\cos 260^\circ$.
+
+问题：能否只在$\realset$中运算得到上例中的三个根？\\
+注意到$\cos 140^\circ=-\cos 40^\circ=-2(\cos 20^\circ)^2+1$, $z_{2,3}$都是$z_1$的多项式。取$F=\rationalset,E=\rationalset[z_1]$, $E$就是关于$z$的多项式$z^3-3z-1$的分裂域，$\operatorname{Gal} (E/F)=\integerset_3$. 可能需要修改的Galios理论，根式扩张但不能含有单位根，只能对$\geqslant 0$的数开方。不再深入。
+
+不限于根式？
+
+对于有三个实根的一元三次方程$y^3+py+q=0$, $\Delta=(q/2)^2+(p/3)^3<0$. 取$\lambda=\pm\sqrt{-4p/3}\in\realset$, 作尺度变换$y=\lambda z$得到$4z^3-3z=-4q/\lambda^3:=\gamma$, 有$|\gamma|<1$. 令$\gamma=\cos\theta$, 得到$z=\cos (\theta+(2k\pi)/3),k=0,1,2$.
+
+对一元四次方程进行变形，可以归结为一元三次方程问题。
+
+一元五次方程可以用椭圆函数求解。
+\begin{equation*}
+    \arcsin x=\int_{0}^{x}(1-t^2)^{-1/2}dt
+\end{equation*}
+椭圆积分
+\begin{equation*}
+    \int P(x)^{-1/2}dx,
+\end{equation*}
+$P$是三次或四次多项式。椭圆积分的反函数是椭圆函数，因此椭圆函数可以看作三角函数的推广。
+
+更高次方程：引入代数函数。

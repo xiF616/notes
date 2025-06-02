@@ -74,3 +74,40 @@ $\Delta$称为一元三次方程的判别式：
 $P$是三次或四次多项式。椭圆积分的反函数是椭圆函数，因此椭圆函数可以看作三角函数的推广。
 
 更高次方程：引入代数函数。
+
+\section{复平面与Riemann球}
+第一周第二讲第一小节->
+
+$\complexset$上的度量、拓扑同$\realset^2$.
+
+设$E\subseteq\complexset$. $E$中的一条道路是指一个连续映射$\gamma\colon [0,1]\to E$. 称$E$道路连通，如果$\forall p,q\in E$, 存在$E$中的道路$\gamma$满足$\gamma(0)=p,\gamma(1)=q$.
+% $\vcentcolon\Leftrightarrow$
+
+定理：对于$\complexset$中的开集，连通和道路连通等价。
+
+定义：连通的开集叫作区域，区域的闭包（区域并上它的边界）叫作闭区域。
+
+\begin{theorem}
+    设$D\subseteq\complexset$是区域，$p,q\in D$, 那么存在分段线性道路$\gamma\colon [0,1]\to D$使得$\gamma(0)=p,\gamma(1)=q$. $\gamma$分段线性是指，存在对区间$[0,1]$的分划$0=t_0<t_1<t_2<\dots<t_n=1$和常数$z_{i,0},z_{i,1},i=1,2,\dots,n$ 使得$\gamma(t)=z_{i,0}+z_{i,1}t,\forall t\in [t_{i-1},t_i]$.
+\end{theorem}
+\begin{proof}
+    取连续函数$\tilde\gamma\colon [0,1]\to D$满足$\tilde\gamma(0)=p,\tilde\gamma(1)=q$, 那么$\Gamma=\tilde\gamma([0,1])$是紧集，因此是闭集。因为闭集$\complexset\setminus D$与$\Gamma$不相交，所以有$\varepsilon\coloneq d(\complexset\setminus D,\Gamma)>0$. 设$\tilde{\gamma}(t)=\tilde{x}(t)+\imageunit\tilde{y}(t)$, $\tilde{x}$, $\tilde{y}\in C([0,1],realset)$. 用一致连续性，存在$\delta>0$, 使得$t',t''\in [0,1]$时有$\tilde{x}(t')-\tilde{x}(t'')<\varepsilon$, $\tilde{y}(t')-\tilde{y}(t'')<\varepsilon$. 将$[0,1]$区间$n$等分，其中$n^{-1}<\delta$, 并在第$k$个小区间上用直线段连接$\tilde{\gamma}((k-1)/n)$和$\tilde{\gamma}(k/n)$得到$\gamma(t)=x(t)+\imageunit y(t)$. 现在对于$t\in [t_{k-1},t_k]$, 估计
+    \begin{align*}
+        |x(t)-\tilde x(t)|&\leqslant |x(t)-\tilde x(t_k)|+|\tilde x(t_k)-\tilde x(t)|
+        \\ &\leqslant |x(t_{k-1})-\tilde x(t_k)|+\varepsilon
+        \\ &=|\tilde x(t_{k-1})-\tilde x(t_k)|+\varepsilon<2\varepsilon.
+    \end{align*}
+    同理$|y(t)-\tilde y(t)|<2\varepsilon$. 于是$|\gamma(t)-\tilde{\gamma}(t)|<C\varepsilon$. 调整常数让$|\gamma(t)-\tilde{\gamma}(t)|<\varepsilon$, 并由$\varepsilon$的定义知道折线落在$D$中。%\qedhere
+\end{proof}
+
+定义（可求长曲线）：设曲线$\gamma\colon [0,1]\to\complexset$. 对任意分划$P\colon 0=t_0<t_1<t_2<\dots<t_n=1$, 定义$L(\gamma,P)\coloneq\sum_{k=1}^{n}|\gamma(t_{k-1})-\gamma(t_k)|$. 若$L(\gamma)\coloneq\sup \{L(\gamma,P)\colon P\text{是对}[0,1]\text{的分划}\}<+\infty$, 那么称$\gamma$是可求长的，长度是$L(\gamma)$.
+
+若$\gamma$分段光滑，那么$\gamma$可求长，且$L(\gamma)=\int_{0}^{1}|\gamma'(t)|dt=\int_{0}^{1}\sqrt{x'(t)^2+y'(t)^2}dt$.
+
+实分析：$\gamma$可求长$\Leftrightarrow$ $x,y$有界变差。
+
+曲线积分要求曲线可求长。后面会比较关注边界是可求长曲线的区域。
+
+\begin{theorem}
+    (Jordan) 设$\gamma\colon [0,1]\to\complexset$是简单（不自交）闭（起点和终点相同）曲线，即$\gamma(t_1)=\gamma(t_2)\Leftrightarrow \{t_1,t_2\}=\{0,1\}$, 那么$\complexset\setminus\gamma$有两个连通分支，这两个连通分支都是开集，其中一个是有界的，称为$\gamma$所围的区域的内部$\operatorname{Int}\gamma$，另一个是无界的，称为$\gamma$所围的区域的外部$\operatorname{Ext}\gamma$.
+\end{theorem}
